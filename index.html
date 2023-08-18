@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challenge</title>
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .typing-container {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .typing-text {
+        display: inline-block;
+        font-family: monospace;
+        font-size: 20px;
+        color: lime;
+        border-right: 2px solid lime;
+        overflow: hidden;
+      }
+
+      p {
+        font-family: monospace;
+        font-size: 25px;
+        color: lime;
+        overflow: hidden;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .typing-animation {
+        animation: typing 10s steps(90), blink 0.5s infinite step-end alternate;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .custom-button {
+        padding: 10px 20px;
+        background-color: rgb(0, 255, 0);
+        color: black;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .custom-button:hover {
+        background-color: rgb(230, 248, 206);
+      }
+
+      .custom-button:active {
+        transform: scale(0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <p>#Victim6996</p>
+    <div class="typing-container">
+      <span class="typing-text typing-animation"></span>
+    </div>
+    <div class="button-container">
+      <button class="custom-button" onclick="redirectToChallengePage()">
+        Try!
+      </button>
+    </div>
+    <script>
+      function redirectToChallengePage() {
+        window.location.href = "chall.html";
+      }
+
+      window.addEventListener("DOMContentLoaded", function () {
+        var text =
+          "I have backed up all your databases. To recover them you must pay 0.015 BTC to this address: 1NhCHFDq3HZHjmmtB1Cs31FFcUXWbznW2i. After your payment email me at s0niac1337.ph1sher@onionmail.org and transaction ID. Emails without transaction ID will be ignored. There is another opportunity for you right below ↓.";
+        var typingContainer = document.querySelector(".typing-container");
+        var typingText = typingContainer.querySelector(".typing-text");
+        typingText.textContent = "";
+
+        function typeWriter(text, index) {
+          if (index < text.length) {
+            typingText.textContent += text.charAt(index);
+            if (typingText.offsetWidth > typingContainer.offsetWidth) {
+              typingContainer.style.whiteSpace = "normal";
+            }
+
+            setTimeout(function () {
+              typeWriter(text, index + 1);
+            }, Math.random() * 100);
+          }
+        }
+
+        typeWriter(text, 0);
+      });
+    </script>
+  </body>
+</html>
